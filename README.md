@@ -1,9 +1,27 @@
 # TODO App
 
+## Run the app
+
+```bash
+pip install "fastapi[standard]"
+```
+
 ## Save dependencies
 
 ```bash
 pip freeze > requirements.txt
+```
+
+## Create virtual environment
+
+```bash
+py -m venv venv
+```
+
+## Activate virtual environment
+
+```bash
+./venv/Scripts/activate
 ```
 
 ## Dynamodb container
