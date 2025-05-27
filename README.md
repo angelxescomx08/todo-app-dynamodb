@@ -3,7 +3,7 @@
 ## Run the app
 
 ```bash
-pip install "fastapi[standard]"
+fastapi dev main.py
 ```
 
 ## Save dependencies
