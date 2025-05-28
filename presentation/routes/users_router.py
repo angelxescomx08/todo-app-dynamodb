@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Query
 from boto3.dynamodb.conditions import Key
 from database.database import table
+import json
 
 users_router = APIRouter()
 
@@ -19,8 +20,6 @@ def list_users(last_evaluated_key=None):
 
 @users_router.get("/")
 def get_users(last_key: str | None = Query(None)):
-    import json
-
     exclusive_start_key = json.loads(last_key) if last_key else None
 
     users, new_last_key = list_users(exclusive_start_key)
