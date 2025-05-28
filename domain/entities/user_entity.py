@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from __future__ import annotations
 
 
 class User(BaseModel):
@@ -17,7 +16,7 @@ class UserEntity:
         self.password = password
 
     @staticmethod
-    def from_dict(data: dict) -> UserEntity:
+    def from_dict(data: dict) -> "UserEntity":
         email = data["email"]
         password = data["password"]
         return UserEntity(email, password)
