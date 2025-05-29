@@ -1,7 +1,8 @@
 from typing import Tuple
+from pydantic import BaseModel
 
 
-class UserDto:
+class UserDto(BaseModel):
     id: str
     email: str
 

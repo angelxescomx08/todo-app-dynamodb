@@ -9,7 +9,7 @@ from passlib.hash import bcrypt
 
 
 class UserDatasourceImpl(UserDatasource):
-    def create(user: CreateUserDto) -> UserDto:
+    def create(self, user: CreateUserDto) -> UserDto:
         user_id = str(uuid4())
         hashed_password = bcrypt.hash(user.password)
         table.put_item(

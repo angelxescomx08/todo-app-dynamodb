@@ -7,7 +7,7 @@ from domain.dtos.user.user_dto import UserDto
 
 class UserDatasource(ABC):
     @abstractmethod
-    def create(user: CreateUserDto) -> UserDto:
+    def create(self, user: CreateUserDto) -> UserDto:
         pass
 
     @abstractmethod

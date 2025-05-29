@@ -7,11 +7,6 @@ class UpdateUserDto(BaseModel):
     email: str | None
     password: str | None
 
-    def __init__(self, id: str, email: str | None, password: str | None):
-        self.id = id
-        self.email = email
-        self.password = password
-
     @staticmethod
     def create(dict: dict) -> Tuple[str | None, "UpdateUserDto"]:
         id = dict["id"]

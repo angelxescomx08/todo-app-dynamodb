@@ -6,10 +6,6 @@ class CreateUserDto(BaseModel):
     email: str
     password: str
 
-    def __init__(self, email: str, password: str):
-        self.email = email
-        self.password = password
-
     @staticmethod
     def create(dict: dict) -> Tuple[str | None, "CreateUserDto"]:
         email = dict["email"]
