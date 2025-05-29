@@ -1,19 +1,14 @@
 from fastapi import APIRouter
 from domain.dtos.user.create_user_dto import CreateUserDto
-from database.database import table
+from infrastructure.datasources.user.user_datasource_impl import UserDatasourceImpl
+from infrastructure.repositories.user.user_repository_impl import UserRepositoryImpl
 
 auth_router = APIRouter()
+
+datasource = UserDatasourceImpl()
+repository = UserRepositoryImpl(datasource)
 
 
 @auth_router.post("/register")
 def create_user(user: CreateUserDto):
-    table.put_item(
-        Item={
-            "PK": "user",
-            "SK": user.email,
-            "email": user.email,
-            "password": user.password,
-        }
-    )
-    response = table.get_item(Key={"PK": "user", "SK": user.email})
-    return response.get("Item")
+    return repository.create(user)
