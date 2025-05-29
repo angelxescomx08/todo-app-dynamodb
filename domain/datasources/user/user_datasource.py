@@ -5,7 +5,7 @@ from domain.dtos.user.create_user_dto import CreateUserDto
 from domain.dtos.user.update_user_dto import UpdateUserDto
 
 
-class UserRepository(ABC):
+class UserDatasource(ABC):
     @abstractmethod
     def create(user: CreateUserDto) -> UserEntity:
         pass

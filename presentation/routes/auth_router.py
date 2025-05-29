@@ -1,13 +1,12 @@
 from fastapi import APIRouter
-from domain.entities.user_entity import User
+from domain.dtos.user.create_user_dto import CreateUserDto
 from database.database import table
 
 auth_router = APIRouter()
 
 
 @auth_router.post("/register")
-def create_user(user: User):
-    # Insertar usuario en DynamoDB
+def create_user(user: CreateUserDto):
     table.put_item(
         Item={
             "PK": "user",
@@ -16,6 +15,5 @@ def create_user(user: User):
             "password": user.password,
         }
     )
-    # Devolver el ítem recién creado
     response = table.get_item(Key={"PK": "user", "SK": user.email})
     return response.get("Item")
