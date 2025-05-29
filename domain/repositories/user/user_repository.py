@@ -1,11 +1,12 @@
 from abc import ABC, abstractmethod
 from domain.entities.user_entity import User
 from domain.entities.paginated_response import PaginatedResponse
+from domain.dtos.user.create_user_dto import CreateUserDto
 
 
 class UserRepository(ABC):
     @abstractmethod
-    def create(user: User) -> User:
+    def create(user: CreateUserDto) -> User:
         pass
 
     @abstractmethod
