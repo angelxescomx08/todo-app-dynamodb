@@ -1,27 +1,27 @@
 from abc import ABC, abstractmethod
-from domain.entities.user_entity import UserEntity
-from domain.entities.paginated_response import PaginatedResponse
+from domain.dtos.pagination.paginated_response import PaginatedResponse
 from domain.dtos.user.create_user_dto import CreateUserDto
 from domain.dtos.user.update_user_dto import UpdateUserDto
+from domain.dtos.user.user_dto import UserDto
 
 
 class UserDatasource(ABC):
     @abstractmethod
-    def create(user: CreateUserDto) -> UserEntity:
+    def create(user: CreateUserDto) -> UserDto:
         pass
 
     @abstractmethod
-    def get_users(self, page: int, limit: int) -> PaginatedResponse[UserEntity]:
+    def get_users(self, page: int, limit: int) -> PaginatedResponse[UserDto]:
         pass
 
     @abstractmethod
-    def get_user_by_id(self, user_id: str) -> UserEntity:
+    def get_user_by_id(self, user_id: str) -> UserDto:
         pass
 
     @abstractmethod
-    def update(self, user: UpdateUserDto) -> UserEntity:
+    def update(self, user: UpdateUserDto) -> UserDto:
         pass
 
     @abstractmethod
-    def delete(self, user_id: str) -> UserEntity:
+    def delete(self, user_id: str) -> UserDto:
         pass
