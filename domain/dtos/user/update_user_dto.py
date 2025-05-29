@@ -8,10 +8,10 @@ class UpdateUserDto(BaseModel):
     password: str | None
 
     @staticmethod
-    def create(dict: dict) -> Tuple[str | None, "UpdateUserDto"]:
-        id = dict["id"]
-        email = dict["email"]
-        password = dict["password"]
+    def create(data: dict) -> Tuple[str | None, "UpdateUserDto"]:
+        id = data["id"]
+        email = data["email"]
+        password = data["password"]
         if not id:
             return ["Id is required", None]
         return [None, UpdateUserDto(id, email, password)]

@@ -20,8 +20,12 @@ class UserDatasourceImpl(UserDatasource):
                 "password": hashed_password,
             }
         )
-        response = table.get_item(Key={"PK": "user", "SK": user.email})
+        response = table.get_item(Key={"PK": f"user#{user_id}", "SK": user.email})
         user = response.get("Item")
+        if not user:
+            return {
+                "id": user_id,
+            }
         return UserDto.create(user)
 
     def get_users(self, page: int, limit: int) -> PaginatedResponse[UserDto]:

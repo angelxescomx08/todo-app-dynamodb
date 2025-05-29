@@ -6,14 +6,10 @@ class UserDto(BaseModel):
     id: str
     email: str
 
-    def __init__(self, id: str, email: str):
-        self.id = id
-        self.email = email
-
     @staticmethod
-    def create(dict: dict) -> Tuple[str | None, "UserDto"]:
-        id = dict["id"]
-        email = dict["email"]
+    def create(data: dict) -> Tuple[str | None, "UserDto"]:
+        id = data["id"]
+        email = data["email"]
         if not id:
             return ["Id is required", None]
         if not email:

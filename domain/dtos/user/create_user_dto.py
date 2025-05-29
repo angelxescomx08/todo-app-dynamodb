@@ -7,9 +7,9 @@ class CreateUserDto(BaseModel):
     password: str
 
     @staticmethod
-    def create(dict: dict) -> Tuple[str | None, "CreateUserDto"]:
-        email = dict["email"]
-        password = dict["password"]
+    def create(data: dict) -> Tuple[str | None, "CreateUserDto"]:
+        email = data["email"]
+        password = data["password"]
         if not email:
             return ["Email is required", None]
         if not password:
