@@ -8,13 +8,13 @@ users_router = APIRouter()
 
 def list_users(last_evaluated_key=None):
     params = {
-        "KeyConditionExpression": Key("PK").eq("user"),
+        "FilterExpression": Key("PK").begins_with("user#"),
         "Limit": 10,
     }
     if last_evaluated_key:
         params["ExclusiveStartKey"] = last_evaluated_key
 
-    response = table.query(**params)
+    response = table.scan(**params)
     return response.get("Items", []), response.get("LastEvaluatedKey")
 
 

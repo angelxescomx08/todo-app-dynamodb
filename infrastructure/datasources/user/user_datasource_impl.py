@@ -6,6 +6,7 @@ from domain.dtos.user.user_dto import UserDto
 from database.database import table
 from uuid import uuid4
 from passlib.hash import bcrypt
+from fastapi.responses import Response
 
 
 class UserDatasourceImpl(UserDatasource):
@@ -30,7 +31,15 @@ class UserDatasourceImpl(UserDatasource):
             "id": user_id,
             "email": user["email"],
         }
-        return UserDto.create(user)
+        error, user = UserDto.create(user)
+        if error:
+            return Response(
+                status_code=400,
+                content={
+                    "error": error,
+                },
+            )
+        return user
 
     def get_users(self, page: int, limit: int) -> PaginatedResponse[UserDto]:
         pass
