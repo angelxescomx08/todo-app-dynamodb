@@ -11,7 +11,7 @@ class RegisterUserUseCase(ABC):
         pass
 
 
-class RegisterUser(RegisterUserUseCase):
+class RegisterUserUseCase(RegisterUserUseCase):
 
     repository: UserRepository = None
 

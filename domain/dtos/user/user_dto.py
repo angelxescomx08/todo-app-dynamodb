@@ -15,4 +15,4 @@ class UserDto(BaseModel):
         if not email:
             return ["Email is required", None]
 
-        return [None, UserDto(id, email)]
+        return [None, UserDto(id=id, email=email)]

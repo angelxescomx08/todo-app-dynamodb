@@ -26,6 +26,10 @@ class UserDatasourceImpl(UserDatasource):
             return {
                 "id": user_id,
             }
+        user = {
+            "id": user_id,
+            "email": user["email"],
+        }
         return UserDto.create(user)
 
     def get_users(self, page: int, limit: int) -> PaginatedResponse[UserDto]:
